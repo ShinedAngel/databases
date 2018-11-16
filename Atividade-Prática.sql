@@ -70,24 +70,24 @@ add foreign key (ID_Depto)
 references Departamento (ID_Depto)
 
 insert into departamento
-values (1, 'construÁ„o', null), (2, 'computaÁ„o', null), (3, 'pesquisa', null)
+values (1, 'constru√ß√£o', null), (2, 'computa√ß√£o', null), (3, 'pesquisa', null)
 
 insert into funcionario
 values (1, 'Juliana do Oculos', 'Rua dos doidos', '16/08/2001', 'F', '1000', null, null),
-(2, 'Romero Britto', 'Rua dos CaetÈs', '16/09/2001', 'M', '20000', null, null),
+(2, 'Romero Britto', 'Rua dos Caet√©s', '16/09/2001', 'M', '20000', null, null),
 (3, 'Geovana do Forninho', 'Rua dos desmaiados', '16/08/1945', 'F', '50000', null, null),
 (4, 'Lula Molusco', 'Rua das Algas', '03/08/1990', 'M', '9000', null, null),
-(5, 'Karla Lucia', 'Rua AimorÈs', '12/08/1992', 'F', '7000', null, null)
+(5, 'Karla Lucia', 'Rua Aimor√©s', '12/08/1992', 'F', '7000', null, null)
 
 insert into projeto
-values (01, 'An·lise de dados', 'Totvs', 2),
+values (01, 'An√°lise de dados', 'Totvs', 2),
 (02, 'Modelagem de processos', 'Record', 3),
-(03, 'Vender picolÈ', 'Rua', 1), 
-(04, 'AÁougue', 'Casa de carnes', 2),
-(05, 'Axuliar de escritÛrio', 'EscritÛrio', 1),
+(03, 'Vender picol√©', 'Rua', 1), 
+(04, 'A√ßougue', 'Casa de carnes', 2),
+(05, 'Axuliar de escrit√≥rio', 'Escrit√≥rio', 1),
 (06, 'Apresentador', 'Band', 3),
 (07, 'Jornalismo', 'Globo News', 3), 
-(08, 'Banqueiro', 'Caixa EconÙmica', 2),
+(08, 'Banqueiro', 'Caixa Econ√¥mica', 2),
 (09, 'Modelo', 'Victoria Angels', 1),
 (10, 'Cantor', 'The voice', 2)
 
@@ -95,22 +95,22 @@ insert into trabalha
 values (1, 1, 10), (2, 1, 40), (3, 2, 44), (4, 3, 25), (5, 2, 35)
 
 insert into dependente
-values (1, 2, 'Julio CÈsar', '14/02/1998', 'M', 'Primo'),
-(2, 1, 'Caio Mateus', '14/02/2001', 'M', 'Irm„o'),
-(3, 3, 'Camila Homasnoff', '01/02/1998', 'F', 'Irm„'),
+values (1, 2, 'Julio C√©sar', '14/02/1998', 'M', 'Primo'),
+(2, 1, 'Caio Mateus', '14/02/2001', 'M', 'Irm√£o'),
+(3, 3, 'Camila Homasnoff', '01/02/1998', 'F', 'Irm√£'),
 (4, 5, 'Maya Lucia', '15/10/2005', 'F', 'Tia'),
-(5, 4, 'Luciana F·tima', '03/12/1994', 'F', 'Prima')
+(5, 4, 'Luciana F√°tima', '03/12/1994', 'F', 'Prima')
 
 select f.nomeFunc from funcionario f
 join departamento d
 on f.ID_Func = d.ID_Gerente
-where d.NomeDepto = 'ConstruÁ„o'
+where d.NomeDepto = 'Constru√ß√£o'
 
 select nomeFunc from Funcionario
-where id_func = (select id_gerente from departamento where NomeDepto = 'ConstruÁ„o')
+where id_func = (select id_gerente from departamento where NomeDepto = 'Constru√ß√£o')
 
 select NomeFunc from funcionario
 where id_func in (select id_func from trabalha
 where id_proj in (select id_proj from projeto
 where id_depto in (select id_depto from departamento
-where NomeDepto = 'ConstruÁ„o')))
+where NomeDepto = 'Constru√ß√£o')))
