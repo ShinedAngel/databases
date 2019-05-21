@@ -1,0 +1,40 @@
+CREATE TABLE produto (
+pk_produto INT IDENTITY PRIMARY KEY,
+nome_prod VARCHAR(57),
+valor_prod FLOAT,
+valor_com_desconto FLOAT NULL
+);
+
+CREATE TRIGGER TR_atualizaValor
+            ON produto 
+    FOR INSERT
+            AS
+         BEGIN
+       DECLARE @VALOR_PROD FLOAT
+        SELECT @VALOR_PROD = valor_prod FROM INSERTED
+        UPDATE produto SET valor_com_desconto = valor_prod * 0.90)
+END;
+
+INSERT INTO produto 
+	 VALUES 	('Gabinete', 2200, ''),
+			('Monitor', 1100, ''),
+			('Teclado', 250, ''),
+			('Mouse', 100, ''),
+			('Pendrive', 23, '');
+SELECT * FROM produto 
+-----------------------------
+CREATE TABLE produtos_excluidos (
+pk_produto_excluido INT IDENTITY PRIMARY KEY,
+nome_prod VARCHAR(57),
+valor_real_prod FLOAT,
+);
+
+CREATE TRIGGER TR_insertProdutos
+            ON produtos_excluidos
+    AFTER INSERT
+            AS
+         BEGIN
+       DECLARE @NOME_PROD VARCHAR(57)
+        SELECT @NOME_PROD = nome_prod FROM INSERTED
+        INSERT INTO produto SET valor_com_desconto = valor_prod * 0.90)
+END;

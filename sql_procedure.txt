@@ -1,0 +1,69 @@
+Tabela RPG Exercicio Prático
+CREATE TABLE RPG (
+     MobID INT IDENTITY PRIMARY KEY,
+     Nome_MOB VARCHAR(255),
+     Level_MOB INT,
+     Exp_MOB INT,
+     Drop_MOB VARCHAR(55)
+);
+
+INSERT INTO RPG VALUES    ('ORC', 3, 15, 'COIN'),
+                          ('Draw', 9, 35, 'SWORD'),
+                          ('HobGoblin', 15, 255, 'AXE'),
+                          ('Goblin', 1, 1, NULL);
+
+
+Criação da Procedure
+CREATE PROCEDURE p_Nivel
+AS
+SELECT Nome_MOB, Level_MOB
+FROM RPG
+
+SELECT * FROM RPG
+EXEC p_Nivel
+
+        1. Exercício 1
+
+CREATE TABLE Funcionarios (
+     pk_usuario INT IDENTITY PRIMARY KEY,
+     nome_funcionario VARCHAR(75),
+     idade INT,
+     sexo CHAR(1)
+);
+
+INSERT INTO FUNCIONARIOS VALUES    ('Diego Augusto', 26, 'M'),
+                                   ('Shined Angel', 19, 'F'),
+                                   ('Vinicius Carvalho', 37, 'M'),
+                                   ('Stella Oliveira', 23, 'F'),
+                                   ('Camila Martins', 29, 'F');
+
+CREATE PROCEDURE SP_Funcionarios
+AS
+SELECT *
+FROM Funcionarios
+
+        2. Virificando o conteúdo da Procedure
+EXEC SP_Funcionarios
+
+        3. Exercício 3
+
+CREATE TABLE Mensalidade (
+     PK_Mensalidade INT IDENTITY PRIMARY KEY,
+     nome_aluno varchar(100),
+     turma varchar(40),
+     periodo INT,
+     valor_mensalidade decimal(10,2),
+     forma_pagamento varchar(30)
+);
+
+CREATE PROCEDURE SP_Criptografia 
+WITH ENCRYPTION
+AS
+SELECT * FROM Mensalidade
+EXEC SP_Criptografia
+Não foi possivel consultar pois não havia dados na tabela.
+
+
+        4. Quando se deve usar uma view ou um procedimento armazenado. Quais suas diferenças?
+
+Uma View, como o próprio nome diz, é uma visualização. São construidas, basicamente, por selects. Já a Stored Procedure é uma sequência de procedimentos. São construidas por selects, updates, inserts, create table etc. A procedure não necessáriamente retorna dados e seu uso é bem mais amplo do que de uma View.
